@@ -1010,6 +1010,16 @@ dependencies = [
 ]
 
 [[package]]
+name = "fungus-test"
+version = "0.1.0"
+dependencies = [
+ "eframe",
+ "wasm-bindgen",
+ "wasm-bindgen-futures",
+ "web-sys",
+]
+
+[[package]]
 name = "futures-core"
 version = "0.3.31"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -2727,15 +2737,6 @@ dependencies = [
  "lazy_static",
  "log",
  "pkg-config",
-]
-
-[[package]]
-name = "wbtek-rs"
-version = "0.1.0"
-dependencies = [
- "eframe",
- "wasm-bindgen",
- "wasm-bindgen-futures",
 ]
 
 [[package]]
