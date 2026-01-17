@@ -1,0 +1,13 @@
+# Rust artifacts
+/target/
+
+# Trunk / Web artifacts
+/dist/
+
+# Env / IDE
+.env
+.idea/
+.vscode/
+
+# Build logs
+*.log

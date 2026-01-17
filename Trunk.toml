@@ -1,0 +1,7 @@
+[build]
+# This makes all paths relative (./) instead of absolute (/)
+public_url = "./"
+
+[serve]
+# You can also lock in your preferred port here
+port = 8080
