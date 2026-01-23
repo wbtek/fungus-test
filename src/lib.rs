@@ -87,7 +87,7 @@ pub fn start() -> Result<(), JsValue> {
         }
 
         // --- DRAWING ---
-        context.set_fill_style(&JsValue::from_str("rgba(0, 0, 0, 0.2)")); 
+        context.set_fill_style_str("rgba(0, 0, 0, 0.2)"); 
         context.fill_rect(0.0, 0.0, canvas.width() as f64, canvas.height() as f64);
 
         for blob in blobs_mut.iter_mut() {
@@ -109,7 +109,7 @@ pub fn start() -> Result<(), JsValue> {
             let radius = (dist * 0.05).max(3.0);
 
             context.begin_path();
-            context.set_fill_style(&JsValue::from_str(&blob.color));
+            context.set_fill_style_str(&blob.color);
             let _ = context.arc(blob.x as f64, blob.y as f64, radius as f64, 0.0, std::f64::consts::PI * 2.0);
             context.fill();
         }
