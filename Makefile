@@ -1,3 +1,4 @@
+
 # MIT License
 #
 # Copyright (c) 2026 - WBTek: Greg Slocum
@@ -29,6 +30,12 @@ SERVER_PATH := /www/slocum.net/wbtek/fungus-test
 LOCAL_SERVER_PATH := /var/www/localhost/htdocs/greg/fungus-test
 
 all: build local
+
+help:
+	@echo "Simple egui demo"
+	@echo "  build targets: build(dev) release(optimized) serve(build and serve on 8080)"
+	@echo "  copy: local(local directory) deploy(scp external) perms(set external)"
+	@echo "  util: clean all(dev build, local copy, default)"
 
 build:
 	trunk build
