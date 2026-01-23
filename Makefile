@@ -26,37 +26,37 @@ APP_NAME := fungus-test
 SERVER_USER := root
 SERVER_HOST := feet
 SERVER_PATH := /www/slocum.net/wbtek/fungus-test
+LOCAL_SERVER_PATH := /var/www/localhost/htdocs/greg/fungus-test
 
-# Trunk Commands
-TRUNK := trunk
+all: build local
 
-all: build
-
-# 1. Build for local testing (uses Trunk.toml settings)
 build:
-	$(TRUNK) build --release
+	trunk build
 
-# 2. Run local dev server on Red
+release: clean
+	trunk build --release
+
 serve:
-	$(TRUNK) serve
+	trunk serve
 
-# 3. Deploy to Feet
+local:
+	cp -a dist/. $(LOCAL_SERVER_PATH)/
+	
 # This builds, then scp's everything in dist/ to the server.
-# Then it ensures permissions are correct (755 for dir, 644 for files).
-deploy: build
+deploy: release
 	@echo "--- Uploading to $(SERVER_HOST) ---"
 	scp -r dist/* $(SERVER_USER)@$(SERVER_HOST):$(SERVER_PATH)/
 	@echo "--- Done! Check https://wbtek.net/fungus-test/ ---"
 
+# set perms on server, hopefully only needs doing once
 perms:
 	@echo "--- Fixing Permissions ---"
 	ssh $(SERVER_USER)@$(SERVER_HOST) "chmod 755 $(SERVER_PATH) && chmod 644 $(SERVER_PATH)/*"
 	@echo "--- Done! ---"
 
-# 4. Clean up local build artifacts
 clean:
-	rm -rf dist
+	trunk clean
 	cargo clean
 
-.PHONY: all build serve deploy clean
+.PHONY: all build release serve local deploy perms clean
 
