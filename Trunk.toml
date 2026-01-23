@@ -1,7 +1,12 @@
 [build]
-# This makes all paths relative (./) instead of absolute (/)
+target = "index.html"
+dist = "dist"
 public_url = "./"
+inject_scripts = false
+filehash = false
 
 [serve]
-# You can also lock in your preferred port here
-port = 8080
+no_autoreload = true
+addresses = ["0.0.0.0"]
+open = false
+

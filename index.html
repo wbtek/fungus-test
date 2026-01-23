@@ -5,7 +5,7 @@
     <style>
         html, body, canvas { margin: 0; padding: 0; width: 100%; height: 100%; overflow: hidden; background: #000; }
     </style>
-    <link data-trunk rel="rust" data-wasm-output-name="wbtek-rs" />
+    <link data-trunk rel="rust" data-wasm-output-name="fungus-test" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <style>
@@ -16,5 +16,23 @@
 <body>
     <input type="range" id="slider" min="1" max="100" value="10" style="position:fixed; top:20px; left:20px; z-index:100;">
     <canvas id="main_canvas"></canvas>
-</body>
+
+    <script type="module">
+        // 1. Import the generated JS glue code
+        import init from './fungus-test.js';
+
+        async function run() {
+            try {
+                // 2. Initialize the WASM module
+                // This fetches the .wasm file and sets up the environment
+                await init();
+                console.log("Fungus-test WASM Loaded");
+            } catch (err) {
+                console.error("Failed to load WASM:", err);
+            }
+        }
+
+        run();
+    </script>
+    </body>
 </html>
